@@ -1,0 +1,25 @@
+{
+  "name": "character-ocean",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "tsc --noEmit",
+    "dev": "node serve.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.3"
+  },
+  "description": "A character-rendered ocean with translucent search, music and focus interfaces.",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jiezi1234/character-ocean.git"
+  },
+  "homepage": "https://shark-ascii-ocean-1022.blond-hippo-0375.chatgpt.site/"
+}

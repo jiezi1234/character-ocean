@@ -1,0 +1,15 @@
+node_modules/
+.openai/
+.sites-runtime/
+.sites-checkout*/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.tar.gz
+*.log
+.DS_Store
+Thumbs.db
+
+# dist/index.html is intentionally committed for offline use.

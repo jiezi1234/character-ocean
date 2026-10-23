@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fafaf8">
+  <meta name="description" content="A quiet ocean, drawn in characters. 字符鲨鱼与鱼群在浅色画布中自由游动。">
+  <title>ASCII Ocean — a little space</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f1f2ed'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='34' fill='%23505a61'%3E%26gt;%3C/text%3E%3C/svg%3E">
+  <!--APP_STYLE-->
+</head>
+<body>
+  <canvas id="ocean" aria-hidden="true"></canvas>
+  <div class="soft-light" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="history-wrap">
+      <button class="glass history-button" id="history-toggle" aria-expanded="false" aria-controls="history-panel">
+        <svg viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 0 2.7-6.4L3 7"/><path d="M3 3v4h4m5 0v5l3 2"/></svg>
+        <span>History</span>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>
+      </button>
+      <section class="popover glass history-panel" id="history-panel" aria-label="念头记录" hidden>
+        <div class="panel-heading"><span>Little thoughts</span><span class="mono" id="thought-count">00</span></div>
+        <p class="empty-history" id="empty-history">Nothing here yet.<br><span>留一个念头，让它慢慢游。</span></p>
+        <ol id="history-list"></ol>
+        <p class="panel-footnote">只保存在这台设备上</p>
+      </section>
+    </div>
+  </header>
+
+  <main class="hero">
+    <h1 id="hero-title">where to next?</h1>
+    <form class="center-panel search-panel glass" id="search-panel" role="search" aria-label="搜索展示">
+      <svg class="search-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg>
+      <label class="sr-only" for="thought">搜索内容</label>
+      <input id="thought" type="search" placeholder="Search anything…" maxlength="600" autocomplete="off" spellcheck="false">
+      <button class="icon-button search-submit" id="send" type="submit" aria-label="记录搜索内容" title="记录搜索内容" disabled>
+        <svg viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg>
+      </button>
+    </form>
+    <section class="center-panel player-panel glass" id="music-panel" aria-label="音乐播放展示" hidden>
+      <div class="track-info">
+        <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="track-copy"><p id="track-title">Somewhere, slowly</p><p id="track-artist">Late Tide</p></div>
+      </div>
+      <div class="track-progress">
+        <input id="track-seek" type="range" min="0" max="272" step="1" value="84" aria-label="播放演示进度">
+        <span class="track-time"><span id="track-elapsed">1:24</span><span class="time-slash">/</span><span id="track-duration">4:32</span></span>
+      </div>
+      <div class="player-buttons">
+        <button class="icon-button" id="track-previous" aria-label="上一首" title="上一首"><svg viewBox="0 0 24 24"><path d="M5 5v14m14-14L8 12l11 7Z"/></svg></button>
+        <button class="icon-button primary-play" id="track-play" aria-label="播放演示" aria-pressed="false" title="播放演示"></button>
+        <button class="icon-button" id="track-next" aria-label="下一首" title="下一首"><svg viewBox="0 0 24 24"><path d="M19 5v14M5 5l11 7-11 7Z"/></svg></button>
+      </div>
+    </section>
+    <section class="center-panel focus-panel glass" id="focus-panel" aria-label="专注计时" hidden>
+      <div class="focus-copy">
+        <label for="focus-task">CURRENT FOCUS</label>
+        <input id="focus-task" type="text" value="Make something good." maxlength="100" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="focus-controls">
+        <button class="focus-clock" id="focus-reset" aria-label="重置专注计时为 25 分钟" title="点击重置为 25:00"><span id="focus-time" role="timer" aria-live="off">25:00</span></button>
+        <button class="icon-button primary-play" id="focus-play" aria-label="开始专注" aria-pressed="false" title="开始专注"></button>
+      </div>
+    </section>
+    <p class="thought-status" id="thought-status" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer class="bottom-bar">
+    <a class="credit mono" href="https://github.com/stackedlol/ascii-sharks" target="_blank" rel="noopener noreferrer" title="动画源码 · stackedlol">ascii ocean <span>↗</span></a>
+    <div class="ocean-controls">
+      <span class="interaction-hint mono">move gently. make a little ripple.</span>
+      <div class="control-dock glass" role="toolbar" aria-label="海洋控制">
+        <button class="mode-button mono" id="style-toggle" aria-label="切换字符风格，当前 ASCII" title="切换字符风格">ASCII</button>
+        <span class="dock-divider"></span>
+        <button class="icon-button" id="pause" aria-label="暂停动画" aria-pressed="false" title="暂停动画"></button>
+        <button class="icon-button" id="theme" aria-label="切换深色" aria-pressed="false" title="切换深色"></button>
+        <span class="dock-divider"></span>
+        <button class="icon-button" id="settings-toggle" aria-label="调整海洋" aria-expanded="false" aria-controls="settings-panel" title="调整海洋">
+          <svg viewBox="0 0 24 24"><path d="M5 4v5m0 4v7m7-16v9m0 4v3m7-16v2m0 4v10M2 9h6m1 8h6m1-11h6"/></svg>
+        </button>
+        <span class="dock-divider"></span>
+        <button class="layout-button" id="layout-toggle" aria-label="切换中间栏，当前搜索，下一种播放" aria-controls="search-panel music-panel focus-panel" title="中间栏：搜索 → 播放 → 专注">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 12h10m-3-3 3 3-3 3"/></svg>
+          <span id="layout-label">搜索</span><span class="layout-dots" aria-hidden="true"><i class="active"></i><i></i><i></i></span>
+        </button>
+      </div>
+      <section class="popover glass settings-panel" id="settings-panel" aria-label="海洋设置" hidden>
+        <div class="panel-heading"><span>A little ocean</span><span class="mono">~ ~ ~</span></div>
+        <label class="setting-label" for="render-mode">字符风格 <span>TEXTURE</span></label>
+        <select id="render-mode">
+          <option value="ascii">ASCII / 原始字符</option>
+          <option value="type">@ 纯字符 / Type</option>
+          <option value="braille">⠿ 盲文点阵 / Braille</option>
+          <option value="blocks">▒ 方块阴影 / Blocks</option>
+          <option value="geometry">○ 几何符号 / Geometry</option>
+          <option value="lines">╱ 线条编织 / Lines</option>
+          <option value="hanzi">魚 汉字艺术 / Hanzi</option>
+        </select>
+        <p class="mode-description" id="mode-description">等宽字符与灰色小格，保留最初的质感。</p>
+        <label class="setting-label" for="roster">鱼种 <span>COMPANY</span></label>
+        <select id="roster">
+          <option value="mixed">混合鱼群 / Mixed</option>
+          <optgroup label="海洋新朋友">
+            <option value="manta">蝠鲼 / Manta ray</option>
+            <option value="whaleshark">鲸鲨 / Whale shark</option>
+            <option value="sunfish">翻车鱼 / Sunfish</option>
+          </optgroup>
+          <optgroup label="鲨鱼家族">
+            <option value="classic">灰鲨 / Classic</option>
+            <option value="hammerhead">锤头鲨 / Hammerhead</option>
+            <option value="greathammer">大锤头鲨 / Great hammerhead</option>
+            <option value="thresher">长尾鲨 / Thresher</option>
+            <option value="zebra">斑马鲨 / Zebra</option>
+            <option value="tiger">虎鲨 / Tiger</option>
+            <option value="mako">灰鲭鲨 / Mako</option>
+            <option value="nurse">护士鲨 / Nurse</option>
+          </optgroup>
+        </select>
+        <div class="setting-label"><label for="speed">游动速度</label><output id="speed-value" class="mono">0.65×</output></div>
+        <input id="speed" type="range" min="0.25" max="1.5" step="0.05" value="0.65" aria-label="游动速度">
+        <div class="ocean-actions">
+          <button type="button" id="add-shark"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>添加鱼</button>
+          <button type="button" id="ripple"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="9" ry="4"/><path d="M8 13c2 2 6 2 8 0M12 4v4"/></svg>轻触水面</button>
+        </div>
+        <p class="panel-footnote">可先暂停，再切换风格对比。移动鼠标靠近鱼群，点击水面泛起涟漪。</p>
+      </section>
+    </div>
+  </footer>
+  <!--APP_SCRIPT-->
+</body>
+</html>
