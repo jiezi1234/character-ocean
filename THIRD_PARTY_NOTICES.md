@@ -14,7 +14,7 @@ Changes in this project include additional species and manta-ray contours,
 multiple character renderers, light/dark palettes, pause/speed controls,
 and the surrounding translucent search/music/focus interfaces.
 
-Credit to the upstream author is retained in the page footer. No upstream
+Credit to the upstream author is retained in source comments, README.md, and this notice. No upstream
 copyright or license is replaced by the MIT grant for the new frontend files.
 See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
 for GitHub's explanation of the distinction between public code and licensed
