@@ -58,7 +58,7 @@ A quiet, character-rendered ocean with translucent search, music and focus inter
 
 ### LINES 线条编织
 
-专注布局。线条随鱼身方向排列，像在水中舒展的编织线稿。
+专注布局，搭配灰鲨慢速游动。线条随鱼身方向排列，像在水中舒展的编织线稿。
 
 [![LINES 线条编织与专注界面，1600×900 动态演示](docs/demos/lines.gif)](docs/demos/lines.gif)
 
