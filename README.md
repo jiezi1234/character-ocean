@@ -1,4 +1,4 @@
-# github直接搜:character-ocean
+# github:character-ocean
 
 一片由字符组成的海洋，一个可以放慢节奏的页面。
 
