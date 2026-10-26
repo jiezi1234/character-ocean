@@ -6,9 +6,7 @@ A quiet, character-rendered ocean with translucent search, music and focus inter
 
 基于 Canvas 2D 与 TypeScript 的前端视觉演示：鱼群在背景中游动，中央保留轻盈的半透明横栏。支持三种界面、七种字符表现、深浅主题，并可打包为一个离线 HTML 文件。
 
-[在线体验](https://shark-ascii-ocean-1022.blond-hippo-0375.chatgpt.site/) · [下载源码](https://github.com/jiezi1234/character-ocean/archive/refs/heads/main.zip) · [授权说明](LICENSE.md)
-
-![浅色主题下的播放界面](docs/images/player.png)
+[在线体验](https://shark-ascii-ocean-1022.blond-hippo-0375.chatgpt.site/) · [高清动图](#高清动图演示) · [下载源码](https://github.com/jiezi1234/character-ocean/archive/refs/heads/main.zip) · [授权说明](LICENSE.md)
 
 > 动画核心参考并改编自 [stackedlol/ascii-sharks](https://github.com/stackedlol/ascii-sharks)，作者为 [stackedlol](https://github.com/stackedlol)。本仓库独立维护，具体来源和改编范围见下方“参考项目与致谢”。上游目前未声明开源许可证，因此不能将整个项目视为 MIT 授权；新增界面及构建工具的 MIT 授权范围见 [LICENSE.md](LICENSE.md)。
 
@@ -21,6 +19,54 @@ A quiet, character-rendered ocean with translucent search, music and focus inter
 - **深浅主题**：浅色留白与深蓝夜间配色，半透明磨砂横栏、细边框与轻字体。
 - **响应式布局**：适配桌面与手机，支持键盘操作及系统“减少动态效果”设置。
 - **无需运行时依赖**：原生 TypeScript + Canvas 2D；字体、样式与脚本全部内嵌，构建后的页面可离线打开。
+
+## 高清动图演示
+
+七种字符风格均为真实页面录制：**1600 × 900 原生分辨率、约 12 帧/秒、6 秒循环**。以下分别搭配搜索、播放和专注布局，点击动图可查看原尺寸。浅色主题下的轻字符与半透明横栏保持页面原貌。
+
+[ASCII](#ascii-原始字符) · [TYPE](#type-纯字符) · [DOTS](#dots-盲文点阵) · [BLOCK](#block-方块阴影) · [GEO](#geo-几何符号) · [LINES](#lines-线条编织) · [HANZI](#hanzi-汉字艺术)
+
+### ASCII 原始字符
+
+搜索布局。等宽字符叠加小格明暗，保留最初的字符海洋质感。
+
+[![ASCII 原始字符与搜索界面，1600×900 动态演示](docs/demos/ascii.gif)](docs/demos/ascii.gif)
+
+### TYPE 纯字符
+
+播放布局。用 `@ # % R E A T` 与标点的疏密勾勒鱼身、光影和皮肤纹理。
+
+[![TYPE 纯字符与播放界面，1600×900 动态演示](docs/demos/type.gif)](docs/demos/type.gif)
+
+### DOTS 盲文点阵
+
+专注布局。细密的盲文点阵构成轻盈、通透的轮廓。
+
+[![DOTS 盲文点阵与专注界面，1600×900 动态演示](docs/demos/braille.gif)](docs/demos/braille.gif)
+
+### BLOCK 方块阴影
+
+搜索布局。通过方块与阴影表达明暗，呈现更厚实的像素质感。
+
+[![BLOCK 方块阴影与搜索界面，1600×900 动态演示](docs/demos/blocks.gif)](docs/demos/blocks.gif)
+
+### GEO 几何符号
+
+播放布局。圆点、圆环、菱形与方块组成游动的几何鱼群。
+
+[![GEO 几何符号与播放界面，1600×900 动态演示](docs/demos/geometry.gif)](docs/demos/geometry.gif)
+
+### LINES 线条编织
+
+专注布局。线条随鱼身方向排列，像在水中舒展的编织线稿。
+
+[![LINES 线条编织与专注界面，1600×900 动态演示](docs/demos/lines.gif)](docs/demos/lines.gif)
+
+### HANZI 汉字艺术
+
+搜索布局。用“一、十、川、水、魚、鯊”的笔画密度塑造轮廓与层次。
+
+[![HANZI 汉字艺术与搜索界面，1600×900 动态演示](docs/demos/hanzi.gif)](docs/demos/hanzi.gif)
 
 ## 三种界面
 
@@ -121,6 +167,7 @@ src/
   math.ts        数学工具
 assets/          内嵌字体与原始字体授权文件
 docs/images/     界面截图
+docs/demos/      七种字符风格的高清 GIF 动图
 licenses/        新增前端代码的 MIT 许可
 build.mjs        esbuild 打包、字体与样式内嵌
 serve.mjs        本地预览服务器
