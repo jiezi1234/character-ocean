@@ -8,8 +8,6 @@ A quiet, character-rendered ocean with translucent search, music and focus inter
 
 [在线体验](https://shark-ascii-ocean-1022.blond-hippo-0375.chatgpt.site/) · [高清动图](#高清动图演示) · [下载源码](https://github.com/jiezi1234/character-ocean/archive/refs/heads/main.zip) · [授权说明](LICENSE.md)
 
-> 动画核心参考并改编自 [stackedlol/ascii-sharks](https://github.com/stackedlol/ascii-sharks)，作者为 [stackedlol](https://github.com/stackedlol)。本仓库独立维护，具体来源和改编范围见下方“参考项目与致谢”。上游目前未声明开源许可证，因此不能将整个项目视为 MIT 授权；新增界面及构建工具的 MIT 授权范围见 [LICENSE.md](LICENSE.md)。
-
 ## 特性
 
 - **三种中央界面**：搜索、播放、专注。右下角一键循环切换，记住上次选择。
@@ -134,14 +132,3 @@ npm run dev
 - **参考版本**：[c521e24](https://github.com/stackedlol/ascii-sharks/commit/c521e24a787e6d4cc460d4cf2b9815f25e4fe453)
 - **沿用并修改的代码**：`src/engine.ts`、`src/world.ts`、`src/renderer.ts`、`src/species.ts`、`src/math.ts`，涉及动画循环、鱼群运动、字符绘制和数学工具。
 - **本项目的扩展**：三种半透明中央界面、七种字符风格、额外鱼种与蝠鲼轮廓、深浅主题、交互控制、本地记录和离线单文件构建。
-
-这些动画模块包含原项目代码，并非仅借鉴视觉灵感。本仓库使用独立的 Git 历史；原作者归属与来源注释保留在源码、本 README 和 THIRD_PARTY_NOTICES.md 中。页面左下角链接指向维护者 [jiezi1234 的 GitHub 主页](https://github.com/jiezi1234)。
-
-## 授权说明
-
-- 动画核心：[stackedlol/ascii-sharks](https://github.com/stackedlol/ascii-sharks)。本项目在其基础上增加了鱼种、字符风格、主题与界面，保留上游作者归属。
-- 新增界面与构建工具：按 [LICENSE.md](LICENSE.md) 所列文件范围使用 MIT 许可。
-- Geist / Geist Mono 与 Noto Sans SC 字体：SIL Open Font License 1.1，原始许可保存在 `assets/`。
-- 更详细的来源、上游版本与授权边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
-
-欢迎通过 Issues 提出视觉改进建议。提交修改前，请执行 `npm run check` 和 `npm run build`，并将更新后的 `dist/index.html` 一并提交。
